@@ -10,6 +10,7 @@ import time
 import schedule
 from random import randrange
 from mail import send_email
+import random
 
 chrome_options = Options()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -20,6 +21,8 @@ driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), o
 
 uname = os.environ.get("USERNAME")
 pw = os.environ.get("PASSWD")
+
+
 
 
 def auto_temp():
@@ -51,8 +54,11 @@ def auto_temp():
     #exit
     driver.quit()
 
-schedule.every().day.at("11:00").do(auto_temp)
-schedule.every().day.at("17:00").do(auto_temp)
+morning_time = '10:'+ str(random.randint(10,59))
+evening_time = '17: + str(random.randint(10,59))
+    
+schedule.every().day.at(morning_time).do(auto_temp)
+schedule.every().day.at(evening_time).do(auto_temp)
 
 if __name__ == "__main__":
     while True:
