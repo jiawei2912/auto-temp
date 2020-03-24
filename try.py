@@ -11,6 +11,7 @@ import schedule
 from random import randrange
 from mail import send_email
 import random
+import datetime
 
 chrome_options = Options()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -54,8 +55,10 @@ def auto_temp():
     #exit
     driver.quit()
 
-morning_time = '10:'+ str(random.randint(10,59))
-evening_time = '17: + str(random.randint(10,59))
+current = datetime.datetime.now()
+if current.hour = 10 and current.minute = 0:
+    morning_time = '10:'+ str(random.randint(10,59))
+    evening_time = '17: + str(random.randint(10,59))
     
 schedule.every().day.at(morning_time).do(auto_temp)
 schedule.every().day.at(evening_time).do(auto_temp)
